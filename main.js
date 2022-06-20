@@ -2,6 +2,19 @@ const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
 
+userPlay = () => {
+    let play = promptUser();
+    play = play.toLowerCase();
+
+    switch(play) {
+        case "rock" :
+            return Rock;
+        case "paper" :
+            return Paper;
+        case "scissors" :
+            return Scissors;
+    }
+}
 computerPlay = () => {
     let play = randomInteger(1,3); // Between 1 - 3
     switch(play) {
@@ -15,4 +28,7 @@ computerPlay = () => {
 }
 randomInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+promptUser = () => {
+    return prompt("Rock, Paper, or Scissors?")
 }
