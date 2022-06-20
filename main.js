@@ -1,20 +1,22 @@
 const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
+let userWins = 0;
+let computerWins = 0;
 
 playRound = (playerSelection, computerSelection) => {
     switch(playerSelection) {
         case Rock :
-            return computerSelection == Scissors ? "You win! Rock beats Scissors" :
-                   computerSelection == Paper ? "You lose! Paper beats Rock" :
+            return computerSelection == Scissors ? (`You win! Rock beats Scissors.\nUser : ${++userWins} Computer : ${computerWins}`):
+                   computerSelection == Paper ? (`You lose! Paper beats Rock.\nUser : ${userWins} Computer : ${++computerWins}`) :
                    "It's a tie!"
         case Paper :
-            return computerSelection == Rock ? "You win! Paper beats Rock" :
-                   computerSelection == Scissors ? "You lose! Scissors beats Paper" :
+            return computerSelection == Rock ? (`You win! Paper beats Rock"\nUser : ${++userWins} Computer : ${computerWins}`) :
+                   computerSelection == Scissors ? (`You lose! Scissors beats Paper\n User : ${userWins} Computer : ${++computerWins}`):
                    "It's a tie!"
         case Scissors :
-            return computerSelection == Paper ? "You win! Scissors beats Paper" :
-                   computerSelection == Rock ? "You lose! Rock beats Scissors" :
+            return computerSelection == Paper ? (`You win! Scissors beats Paper\nUser : ${++userWins} Computer : ${computerWins}`) :
+                   computerSelection == Rock ? (`You lose! Rock beats Scissors\nUser : ${userWins} Computer : ${++computerWins}`) :
                    "It's a tie!"
     }
 }
@@ -49,7 +51,13 @@ randomInteger = (min, max) => {
 promptUser = () => {
     return prompt("Rock, Paper, or Scissors?")
 }
+game = () => {
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = userPlay();
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+     }
+     console.log(`Final User Score : ${userWins}\nFinal Computer Score : ${computerWins}`);
+}
 
-const playerSelection = userPlay();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+game();
