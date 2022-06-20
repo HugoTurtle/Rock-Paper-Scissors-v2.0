@@ -2,6 +2,10 @@ const Rock = "Rock";
 const Paper = "Paper";
 const Scissors = "Scissors";
 
+playRound = (playerSelection, computerSelection) => {
+
+}
+
 userPlay = () => {
     let play = promptUser();
     play = play.toLowerCase();
@@ -32,3 +36,7 @@ randomInteger = (min, max) => {
 promptUser = () => {
     return prompt("Rock, Paper, or Scissors?")
 }
+
+const playerSelection = userPlay();
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
