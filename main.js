@@ -51,13 +51,13 @@ randomInteger = (min, max) => {
 promptUser = () => {
     return prompt("Rock, Paper, or Scissors?")
 }
-game = () => {
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = userPlay();
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-     }
-     console.log(`Final User Score : ${userWins}\nFinal Computer Score : ${computerWins}`);
-}
+// game = () => {
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = userPlay();
+//         const computerSelection = computerPlay();
+//         console.log(playRound(playerSelection, computerSelection));
+//      }
+//      console.log(`Final User Score : ${userWins}\nFinal Computer Score : ${computerWins}`);
+// }
 
-game();
+// game();
