@@ -52,12 +52,21 @@ promptUser = (userChoice) => {
     return userChoice;
 }
 
+score = (player, computer) => {
+    const container = document.querySelector("#button-container");
+    const score = document.createElement("div");
+    score.classList.add("score")
+    score.textContent = playRound(player, computer);
+
+    container.appendChild(score);
+}
+
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     const playerSelection = promptUser(button.textContent);
     const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+    score(playerSelection,computerSelection);
   });
 });
