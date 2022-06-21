@@ -7,17 +7,17 @@ let computerWins = 0;
 playRound = (playerSelection, computerSelection) => {
     switch(playerSelection) {
         case Rock :
-            return computerSelection == Scissors ? (`You win! Rock beats Scissors.\nUser : ${++userWins} Computer : ${computerWins}`):
-                   computerSelection == Paper ? (`You lose! Paper beats Rock.\nUser : ${userWins} Computer : ${++computerWins}`) :
-                   "It's a tie!"
+            return computerSelection == Scissors ? (`You win! Rock beats Scissors.\r\nUser : ${++userWins} Computer : ${computerWins}`):
+                   computerSelection == Paper ? (`You lose! Paper beats Rock.\r\nUser : ${userWins} Computer : ${++computerWins}`) :
+                   `It's a tie\r\nUser : ${userWins} Computer : ${computerWins}`
         case Paper :
-            return computerSelection == Rock ? (`You win! Paper beats Rock"\nUser : ${++userWins} Computer : ${computerWins}`) :
-                   computerSelection == Scissors ? (`You lose! Scissors beats Paper\n User : ${userWins} Computer : ${++computerWins}`):
-                   "It's a tie!"
+            return computerSelection == Rock ? (`You win! Paper beats Rock"\r\nUser : ${++userWins} Computer : ${computerWins}`) :
+                   computerSelection == Scissors ? (`You lose! Scissors beats Paper\r\n User : ${userWins} Computer : ${++computerWins}`):
+                   `It's a tie\r\nUser : ${userWins} Computer : ${computerWins}`
         case Scissors :
-            return computerSelection == Paper ? (`You win! Scissors beats Paper\nUser : ${++userWins} Computer : ${computerWins}`) :
-                   computerSelection == Rock ? (`You lose! Rock beats Scissors\nUser : ${userWins} Computer : ${++computerWins}`) :
-                   "It's a tie!"
+            return computerSelection == Paper ? (`You win! Scissors beats Paper\r\nUser : ${++userWins} Computer : ${computerWins}`) :
+                   computerSelection == Rock ? (`You lose! Rock beats Scissors\r\nUser : ${userWins} Computer : ${++computerWins}`) :
+                   `It's a tie\r\nUser : ${userWins} Computer : ${computerWins}`
     }
 }
 
@@ -51,16 +51,18 @@ randomInteger = (min, max) => {
 promptUser = (userChoice) => {
     return userChoice;
 }
-
-score = (player, computer) => {
+createScoreDiv = () => {
     const container = document.querySelector("#button-container");
     const score = document.createElement("div");
+    score.setAttribute('style', 'white-space: pre;'); //Adds new line to \r\n text
+
     score.classList.add("score")
-    score.textContent = playRound(player, computer);
-
-    container.appendChild(score);
+    return container.appendChild(score);
 }
-
+let updateScore = createScoreDiv();
+score = (player, computer) => {
+    updateScore.textContent = playRound(player, computer); 
+}
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
