@@ -48,16 +48,16 @@ computerPlay = () => {
 randomInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-promptUser = () => {
-    return prompt("Rock, Paper, or Scissors?")
+promptUser = (userChoice) => {
+    return userChoice;
 }
-// game = () => {
-//     for (let i = 0; i < 5; i++) {
-//         const playerSelection = userPlay();
-//         const computerSelection = computerPlay();
-//         console.log(playRound(playerSelection, computerSelection));
-//      }
-//      console.log(`Final User Score : ${userWins}\nFinal Computer Score : ${computerWins}`);
-// }
 
-// game();
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const playerSelection = promptUser(button.textContent);
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+  });
+});
