@@ -12,3 +12,12 @@ body {
     width: auto;
     height: 200px;
 }
+button {
+    min-height: 250px;
+    min-width: 250px;
+}
+.score {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px
+}
