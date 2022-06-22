@@ -80,16 +80,18 @@ displayWinner = () => {
     }
 }
 const buttons = document.querySelectorAll('button');
-
+/*
+    Plays the game
+*/
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
-    if(userWins == 5 || computerWins == 5) {
+    const playerSelection = promptUser(button.textContent);
+    const computerSelection = computerPlay();
+    score(playerSelection,computerSelection);
+    if(userWins == 5 || computerWins == 5) { //Makes sure game ends after score of 5
         disableButton();
         displayWinner();
         return;
     }
-    const playerSelection = promptUser(button.textContent);
-    const computerSelection = computerPlay();
-    score(playerSelection,computerSelection);
   });
 });
