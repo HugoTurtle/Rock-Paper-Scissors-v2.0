@@ -59,14 +59,35 @@ createScoreDiv = () => {
     score.classList.add("score")
     return container.appendChild(score);
 }
+
 let updateScore = createScoreDiv();
+
 score = (player, computer) => {
     updateScore.textContent = playRound(player, computer); 
+}
+
+disableButton = () => {
+    let buttons = document.querySelectorAll('button');
+    buttons.forEach((btn) => {
+        btn.setAttribute('disabled', true);
+    })
+}
+displayWinner = () => {
+    if(userWins > computerWins) {
+        updateScore.textContent = `You win!\r\nFinal Score \r\nUser : ${userWins} Computer : ${computerWins}`;
+    } else {
+        updateScore.textContent = `You lose!\r\nFinal Score \r\nUser : ${userWins} Computer : ${computerWins}`;
+    }
 }
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
+    if(userWins == 5 || computerWins == 5) {
+        disableButton();
+        displayWinner();
+        return;
+    }
     const playerSelection = promptUser(button.textContent);
     const computerSelection = computerPlay();
     score(playerSelection,computerSelection);
